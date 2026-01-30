@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>World Conquest Simulator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="map"></canvas>
+
+<div id="ui">
+  <b id="nation"></b><br>
+  Data: <span id="date"></span><br>
+  GDP: <span id="gdp"></span><br>
+  Esercito: <span id="army"></span><br>
+  Governo: <span id="gov"></span><br>
+  Regioni possedute: <span id="regions"></span><br>
+
+  <button onclick="nextDay()">⏩ Giorno</button>
+  <button onclick="nextMonth()">📅 Mese</button>
+  <button onclick="nextYear()">📆 Anno</button>
+  <button onclick="recruit()">⚔️ Recluta Truppe</button>
+  <button onclick="research()">🧪 Ricerca Tecnologie</button>
+</div>
+
+<div id="log"></div>
+
+<script src="game.js"></script>
+</body>
+</html>
