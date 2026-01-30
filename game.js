@@ -45,23 +45,37 @@ function drawMap() {
 
     if (!countriesData.length) return;
 
+    // 1) Primo riempi le nazioni con colori
     countriesData.forEach(c => {
-        if (!c.geometry) return; // sicurezza extra
-        ctx.beginPath();
         const geom = c.geometry;
+        if (!geom || !Array.isArray(geom.coordinates)) return;
 
+        ctx.beginPath();
         if (geom.type === "Polygon") drawPolygon(geom.coordinates);
-        else if (geom.type === "MultiPolygon") geom.coordinates.forEach(poly => drawPolygon(poly));
+        else if (geom.type === "MultiPolygon")
+            geom.coordinates.forEach(poly => drawPolygon(poly));
 
-        // Protezione totale: properties può essere undefined
         const name = (c.properties && (c.properties.ADMIN || c.properties.NAME)) || "Unknown";
         ctx.fillStyle = color(name);
-        ctx.strokeStyle = "#000";
-        ctx.lineWidth = 0.5;
         ctx.fill();
+    });
+
+    // 2) Poi disegna i **bordi netti** sopra
+    countriesData.forEach(c => {
+        const geom = c.geometry;
+        if (!geom || !Array.isArray(geom.coordinates)) return;
+
+        ctx.beginPath();
+        if (geom.type === "Polygon") drawPolygon(geom.coordinates);
+        else if (geom.type === "MultiPolygon")
+            geom.coordinates.forEach(poly => drawPolygon(poly));
+
+        ctx.strokeStyle = "#222"; // colore più scuro per confini
+        ctx.lineWidth = 1;
         ctx.stroke();
     });
 }
+
 
 // Disegna un singolo poligono
 function drawPolygon(coords) {
