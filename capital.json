@@ -1,0 +1,7 @@
+[
+  {"country":"Italy","capital":"Rome","lat":41.9028,"lon":12.4964},
+  {"country":"France","capital":"Paris","lat":48.8566,"lon":2.3522},
+  {"country":"USA","capital":"Washington D.C.","lat":38.9072,"lon":-77.0369},
+  {"country":"China","capital":"Beijing","lat":39.9042,"lon":116.4074},
+  {"country":"Brazil","capital":"Brasilia","lat":-15.8267,"lon":-47.9218}
+]
